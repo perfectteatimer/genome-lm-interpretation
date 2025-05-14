@@ -44,6 +44,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## Acknowledgments
 
 - Special thanks to all contributors and the open-source community, epsecially to the authors of HyenaDNA for their groundbreaking work in long-range genomic sequence modeling.
-- This project is inspired by the need to explore dna tasks that can find applications in our lives.
+- This project is inspired by the need to explore DNA tasks that can find applications in our lives.
 
 [^1]: Nguyen, E., Poli, M., Faizi, M., et al. (2023). *HyenaDNA: Long-Range Genomic Sequence Modeling at Single Nucleotide Resolution*. arXiv:2306.15794. [Link](https://arxiv.org/abs/2306.15794)
