@@ -2,7 +2,7 @@
 
 This repository contains the research project "Identifying Biological Relations in the Human Genome Through Interpretation of Language Models", which focuses on analyzing DNA structures using deep learning and natural language processing techniques.
 
-In this study, I evaluated the performance of the HyenaDNA model[^1] on specialized DNA structures, including G-quadruplexes (G4) and Z-DNA, and assessed its capability to identify promoter regions. Additionally, I used Explainable AI (XAI) methods to interpret the model's predictions and validate their biological relevance. To check it out in detail, head over to this repo!
+In this study, I evaluated the performance (fine-tuned) of the HyenaDNA model[^1] on specialized DNA structures, including G-quadruplexes (G4) and Z-DNA, and assessed its capability to identify promoter regions. Additionally, I used Explainable AI (XAI) methods to interpret the model's predictions and validate their biological relevance. To check it out in detail, head over to this repo!
 
 ## Project Structure
 
