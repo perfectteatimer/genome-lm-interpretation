@@ -1,4 +1,4 @@
-# coursework_zdna_llm
+# coursework_dna_llm
 
 This repository contains the research project "Identifying Biological Relations in the Human Genome Through Interpretation of Language Models", which focuses on analyzing DNA structures using deep learning and natural language processing techniques.
 
