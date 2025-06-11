@@ -85,14 +85,14 @@ class HyenaExponentialModulation(nn.Module):
     """The window function applied to the output of the (MLP) filter function."""
 
     def __init__(
-        self,
-        d_model,
-        fast_decay_pct=0.3,
-        slow_decay_pct=1.5,
-        target=1e-2,
-        modulate: bool = True,
-        shift: float = 0.05,
-        **kwargs,
+            self,
+            d_model,
+            fast_decay_pct=0.3,
+            slow_decay_pct=1.5,
+            target=1e-2,
+            modulate: bool = True,
+            shift: float = 0.05,
+            **kwargs,
     ):
         super().__init__()
         self.modulate = modulate
@@ -133,7 +133,7 @@ class HyenaFilter(nn.Module):
         act = HyenaSin(config)
         self.emb_dim = config.emb_dim
         assert (
-            self.emb_dim % 2 != 0 and self.emb_dim >= 3
+                self.emb_dim % 2 != 0 and self.emb_dim >= 3
         ), "emb_dim must be odd and greater or equal to 3 (time, sine and cosine)"
         self.seq_len = config.max_seq_len
 
@@ -176,9 +176,9 @@ class HyenaFilter(nn.Module):
 
 class HyenaOperator(nn.Module):
     def __init__(
-        self,
-        config,
-        **filter_args,
+            self,
+            config,
+            **filter_args,
     ):
         r"""
         Hyena operator described in the paper https://arxiv.org/pdf/2302.10866.pdf
@@ -312,7 +312,7 @@ class HyenaEmbeddings(nn.Module):
         vocab_size = config.vocab_size
         if vocab_size % config.pad_vocab_size_multiple != 0:
             vocab_size += config.pad_vocab_size_multiple - (
-                vocab_size % config.pad_vocab_size_multiple
+                    vocab_size % config.pad_vocab_size_multiple
             )
         self.word_embeddings = nn.Embedding(
             vocab_size, config.d_model, padding_idx=padding_idx
@@ -417,7 +417,7 @@ class HyenaDNAModel(HyenaDNAPreTrainedModel):
         self.post_init()
 
     def forward(
-        self, input_ids, inputs_embeds=None, output_hidden_states=None, return_dict=None
+            self, input_ids, inputs_embeds=None, output_hidden_states=None, return_dict=None
     ):
         output_hidden_states = (
             output_hidden_states
@@ -452,7 +452,7 @@ class HyenaDNAForCausalLM(HyenaDNAPreTrainedModel):
         vocab_size = config.vocab_size
         if vocab_size % config.pad_vocab_size_multiple != 0:
             vocab_size += config.pad_vocab_size_multiple - (
-                vocab_size % config.pad_vocab_size_multiple
+                    vocab_size % config.pad_vocab_size_multiple
             )
         self.vocab_size = vocab_size
         self.lm_head = nn.Linear(config.d_model, vocab_size, bias=False)
@@ -479,12 +479,12 @@ class HyenaDNAForCausalLM(HyenaDNAPreTrainedModel):
         return self.hyena
 
     def forward(
-        self,
-        input_ids: torch.LongTensor = None,
-        inputs_embeds: Optional[torch.FloatTensor] = None,
-        labels: Optional[torch.LongTensor] = None,
-        output_hidden_states: Optional[bool] = None,
-        return_dict: Optional[bool] = None,
+            self,
+            input_ids: torch.LongTensor = None,
+            inputs_embeds: Optional[torch.FloatTensor] = None,
+            labels: Optional[torch.LongTensor] = None,
+            output_hidden_states: Optional[bool] = None,
+            return_dict: Optional[bool] = None,
     ) -> Union[Tuple, CausalLMOutput]:
 
         output_hidden_states = (
@@ -549,16 +549,16 @@ class HyenaDNAForSequenceClassification(HyenaDNAPreTrainedModel):
         self.hyena.backbone.embeddings.word_embeddings = value
 
     def forward(
-        self,
-        input_ids: torch.LongTensor = None,
-        inputs_embeds: Optional[torch.FloatTensor] = None,
-        labels: Optional[torch.LongTensor] = None,
-        output_hidden_states: Optional[bool] = None,
-        return_dict: Optional[bool] = None,
-        attention_mask: Optional[
-            torch.LongTensor
-        ] = None,  # Accept attention_mask added for interpretation
-        output_attentions: Optional[bool] = None,  # for lora
+            self,
+            input_ids: torch.LongTensor = None,
+            inputs_embeds: Optional[torch.FloatTensor] = None,
+            labels: Optional[torch.LongTensor] = None,
+            output_hidden_states: Optional[bool] = None,
+            return_dict: Optional[bool] = None,
+            attention_mask: Optional[
+                torch.LongTensor
+            ] = None,  # Accept attention_mask added for interpretation
+            output_attentions: Optional[bool] = None,  # for lora
     ) -> Union[Tuple, SequenceClassifierOutput]:
         r"""
         labels (`torch.LongTensor` of shape `(batch_size,)`, *optional*):
@@ -593,7 +593,7 @@ class HyenaDNAForSequenceClassification(HyenaDNAPreTrainedModel):
         else:
             if input_ids is not None:
                 sequence_lengths = (
-                    torch.eq(input_ids, self.config.pad_token_id).long().argmax(-1) - 1
+                        torch.eq(input_ids, self.config.pad_token_id).long().argmax(-1) - 1
                 ).to(logits.device)
             else:
                 sequence_lengths = -1
@@ -609,7 +609,7 @@ class HyenaDNAForSequenceClassification(HyenaDNAPreTrainedModel):
                 if self.num_labels == 1:
                     self.config.problem_type = "regression"
                 elif self.num_labels > 1 and (
-                    labels.dtype == torch.long or labels.dtype == torch.int
+                        labels.dtype == torch.long or labels.dtype == torch.int
                 ):
                     self.config.problem_type = "single_label_classification"
                 else:
@@ -667,23 +667,23 @@ class HyenaDNAForTokenClassification(HyenaDNAPreTrainedModel):
         self.hyena.backbone.embeddings.word_embeddings = value
 
     def forward(
-        self,
-        input_ids: torch.LongTensor = None,  # Token IDs (batch, seq_len)
-        inputs_embeds: Optional[
-            torch.FloatTensor
-        ] = None,  # Optional: precomputed embeddings
-        attention_mask: Optional[
-            torch.LongTensor
-        ] = None,  # Ignored (for compatibility)
-        labels: Optional[torch.LongTensor] = None,  # Token labels (batch, seq_len)
-        output_hidden_states: Optional[
-            bool
-        ] = None,  # Whether to return all hidden states
-        return_dict: Optional[bool] = None,  # Whether to return a dict
-        token_type_ids: Optional[
-            torch.LongTensor
-        ] = None,  # Ignored (for compatibility)
-        output_attentions: Optional[bool] = None,  # for lora
+            self,
+            input_ids: torch.LongTensor = None,  # Token IDs (batch, seq_len)
+            inputs_embeds: Optional[
+                torch.FloatTensor
+            ] = None,  # Optional: precomputed embeddings
+            attention_mask: Optional[
+                torch.LongTensor
+            ] = None,  # Ignored (for compatibility)
+            labels: Optional[torch.LongTensor] = None,  # Token labels (batch, seq_len)
+            output_hidden_states: Optional[
+                bool
+            ] = None,  # Whether to return all hidden states
+            return_dict: Optional[bool] = None,  # Whether to return a dict
+            token_type_ids: Optional[
+                torch.LongTensor
+            ] = None,  # Ignored (for compatibility)
+            output_attentions: Optional[bool] = None,  # for lora
     ) -> Union[Tuple, TokenClassifierOutput]:
         return_dict = (
             return_dict if return_dict is not None else self.config.use_return_dict
