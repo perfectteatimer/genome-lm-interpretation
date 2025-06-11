@@ -10,7 +10,7 @@ In this study, I evaluated the performance (fine-tuned) of the HyenaDNA model[^1
 - `src/` — Source code for models and utility functions.
 - `data/` — Data and preprocessed files.
 - `requirements.txt` — List of required dependencies.
-- `requirements.txt` — Report and presentation of the project(will be added soon).
+- `report/` — Report and presentation of the project.
 
 ## Getting Started
 
