@@ -59,7 +59,7 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/perfectteatimer/interpreting-genomic-language-models"
+Homepage = "https://github.com/perfectteatimer/genome-lm-interpretation"
 "Project showcase (HSE)" = "https://cs.hse.ru/cppr/best_projects/genome_lm_interpretation"
 
 [project.scripts]

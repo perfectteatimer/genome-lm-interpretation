@@ -22,8 +22,7 @@ keywords:
   - G-quadruplex
   - promoter
 license: MIT
-repository-code: "https://github.com/perfectteatimer/interpreting-genomic-language-models"
-url: "https://cs.hse.ru/cppr/best_projects/genome_lm_interpretation"
+repository-code: "https://github.com/perfectteatimer/genome-lm-interpretation"
 references:
   - type: article
     title: "HyenaDNA: Long-Range Genomic Sequence Modeling at Single Nucleotide Resolution"

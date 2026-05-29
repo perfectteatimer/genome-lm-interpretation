@@ -6,8 +6,8 @@ codebase consistent and easy to review.
 ## Development setup
 
 ```bash
-git clone https://github.com/perfectteatimer/interpreting-genomic-language-models.git
-cd interpreting-genomic-language-models
+git clone https://github.com/perfectteatimer/genome-lm-interpretation.git
+cd genome-lm-interpretation
 python -m venv .venv && source .venv/bin/activate
 make install-dev      # editable install + ruff/black/pytest
 ```

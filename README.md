@@ -12,7 +12,7 @@ model on specialised DNA-structure tasks, and using Explainable-AI (XAI)
 attribution methods to verify that the model's predictions rest on biologically
 meaningful sequence motifs.
 
-> 🏆 Selected as one of the **best coursework projects** of the year at the
+> Selected as one of the **best coursework projects** of the year at the
 > HSE Faculty of Computer Science.
 > Project showcase & defence talk:
 > **<https://cs.hse.ru/cppr/best_projects/genome_lm_interpretation>**
@@ -78,8 +78,8 @@ augmentation, 5-fold CV, and a LoRA/PEFT study).
 ## Installation
 
 ```bash
-git clone https://github.com/perfectteatimer/interpreting-genomic-language-models.git
-cd interpreting-genomic-language-models
+git clone https://github.com/perfectteatimer/genome-lm-interpretation.git
+cd genome-lm-interpretation
 
 python -m venv .venv && source .venv/bin/activate    # optional but recommended
 ```
