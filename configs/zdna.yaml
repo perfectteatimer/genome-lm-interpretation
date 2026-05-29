@@ -1,0 +1,36 @@
+# Z-DNA per-nucleotide (token) classification on hg38.
+# Best configuration: two-stage fine-tuning (frozen head warm-up, then
+# discriminative full fine-tuning), F1 ~= 0.64.
+name: zdna
+
+data:
+  task_type: token
+  data_root: data
+  labels_file: z_dna/hg38_zdna/sparse/ZDNA_cousine.pkl
+  blacklist_file: blacklist_hg38_v2.pkl
+  dna_dir: z_dna/hg38_dna
+  window_width: 100
+  neg_pos_ratio: 3
+  test_size: 0.2
+  val_size: 0.25
+
+model:
+  base_model_name: LongSafari/hyenadna-tiny-1k-seqlen-hf
+  num_labels: 2
+  class_weights: [0.7, 2.0]
+  max_length: 100
+
+training:
+  output_dir: results/zdna/two_stage
+  metric_for_best_model: f1
+  per_device_train_batch_size: 64
+  per_device_eval_batch_size: 64
+  weight_decay: 0.01
+  fp16: true
+  seed: 42
+  two_stage: true
+  stage1_epochs: 3
+  stage1_lr: 1.0e-3
+  stage2_epochs: 6
+  backbone_lr: 1.0e-5
+  head_lr: 5.0e-4

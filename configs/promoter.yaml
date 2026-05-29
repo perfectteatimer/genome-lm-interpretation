@@ -1,0 +1,27 @@
+# Promoter sequence classification on the GUE benchmark (prom_core_all).
+# Best configuration: 10 epochs, lr 6e-4, linear schedule, batch size 64,
+# F1 ~= 0.82.
+name: promoter
+
+data:
+  task_type: sequence
+  hf_dataset: leannmlindsey/GUE
+  hf_config: prom_core_all
+
+model:
+  base_model_name: LongSafari/hyenadna-tiny-1k-seqlen-hf
+  num_labels: 2
+  max_length: 100
+
+training:
+  output_dir: results/promoter/finetune
+  num_train_epochs: 10
+  learning_rate: 6.0e-4
+  per_device_train_batch_size: 64
+  per_device_eval_batch_size: 64
+  lr_scheduler_type: linear
+  warmup_ratio: 0.10
+  weight_decay: 0.01
+  fp16: true
+  metric_for_best_model: f1
+  seed: 42

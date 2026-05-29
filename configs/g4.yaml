@@ -1,0 +1,35 @@
+# G-quadruplex (G4) per-nucleotide (token) classification on hg38.
+# Best configuration: single-stage fine-tuning, batch size 32, lr 6e-4,
+# linear schedule, F1 ~= 0.58.
+name: g4
+
+data:
+  task_type: token
+  data_root: data
+  labels_file: g4.pkl
+  blacklist_file: blacklist_hg38_v2.pkl
+  dna_dir: z_dna/hg38_dna
+  window_width: 100
+  neg_pos_ratio: 3
+  test_size: 0.2
+  val_size: 0.25
+
+model:
+  base_model_name: LongSafari/hyenadna-tiny-1k-seqlen-hf
+  num_labels: 2
+  class_weights: [0.7, 2.0]
+  max_length: 100
+
+training:
+  output_dir: results/g4/finetune
+  num_train_epochs: 12
+  learning_rate: 6.0e-4
+  per_device_train_batch_size: 32
+  per_device_eval_batch_size: 32
+  lr_scheduler_type: linear
+  warmup_ratio: 0.10
+  weight_decay: 0.01
+  fp16: true
+  metric_for_best_model: f1
+  seed: 42
+  two_stage: false

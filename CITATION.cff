@@ -1,0 +1,38 @@
+cff-version: 1.2.0
+message: "If you use this software or its findings, please cite it as below."
+title: "Identifying Biological Relations in the Human Genome Through Interpretation of Language Models"
+abstract: >-
+  Fine-tuning and interpretation of the HyenaDNA genomic language model on
+  specialised DNA-structure tasks (Z-DNA, G-quadruplexes) and promoter
+  recognition, using Explainable-AI attribution methods (Integrated Gradients,
+  SmoothGrad, Saliency) to validate the biological relevance of the model's
+  predictions.
+type: software
+authors:
+  - family-names: Bokhyan
+    given-names: Roman
+    email: romanbokhyan@gmail.com
+keywords:
+  - genomics
+  - language models
+  - HyenaDNA
+  - interpretability
+  - explainable AI
+  - Z-DNA
+  - G-quadruplex
+  - promoter
+license: MIT
+repository-code: "https://github.com/perfectteatimer/interpreting-genomic-language-models"
+url: "https://cs.hse.ru/cppr/best_projects/genome_lm_interpretation"
+references:
+  - type: article
+    title: "HyenaDNA: Long-Range Genomic Sequence Modeling at Single Nucleotide Resolution"
+    authors:
+      - family-names: Nguyen
+        given-names: Eric
+      - family-names: Poli
+        given-names: Michael
+      - family-names: Faizi
+        given-names: Marjan
+    year: 2023
+    url: "https://arxiv.org/abs/2306.15794"

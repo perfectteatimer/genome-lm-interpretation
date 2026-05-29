@@ -1,0 +1,47 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+.eggs/
+build/
+dist/
+.installed.cfg
+
+# --- Virtual environments ---
+.venv/
+venv/
+env/
+ENV/
+
+# --- Editors / IDEs ---
+.idea/
+.vscode/
+*.swp
+.DS_Store
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+
+# --- ML / training artefacts ---
+# Trained checkpoints and large weights are not version-controlled.
+# See README "Data & model weights" for how to obtain / reproduce them.
+data/models/
+logs/
+wandb/
+*.bin
+*.safetensors
+*.pt
+*.ckpt
+stage1/
+stage2/
+
+# --- Large genomic data (must be obtained separately) ---
+data/z_dna/
+data/sparse_vector/
+
+# --- Caches ---
+.cache/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
